@@ -1,0 +1,31 @@
+# Paths and data settings. Override per environment, e.g. paths.root=/content/drive/MyDrive/reefwatch
+paths:
+  root: .
+  reefnet_csv: data/raw/All_ReefNet_annotations.csv
+  mlc_dir: data/raw/mlc
+  rsg_zip: data/raw/ReefNet_RSG-TestDataset_images.zip
+  interim: data/interim
+  patches: data/patches
+  manifests: data/manifests
+  splits: data/splits
+
+ingest:
+  chunksize: 1000000
+
+subset:
+  seed: 0
+  tiers:
+    S: { images: 6000, quota_cap: 1000 }
+    M: { images: 30000, quota_cap: 4000 }
+
+patches:
+  crop_px: 512
+  store_px: 256
+  jpeg_quality: 90
+  shard_size: 10000
+
+dedup:
+  phash_hamming_threshold: 8   # calibrate on real duplicates, record in docs/DECISIONS.md
+
+split:
+  seed: 42

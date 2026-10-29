@@ -1,0 +1,41 @@
+# Data: never committed (CLAUDE.md NEVER rule 6). Only README and split ID lists are tracked.
+data/*
+!data/README.md
+!data/splits/
+data/splits/*
+!data/splits/.gitkeep
+!data/splits/*.csv
+!data/splits/TEST_HASH.txt
+
+# Model weights, run outputs, tracking
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.parquet
+results/
+wandb/
+mlruns/
+
+# Images that should never be in Git
+*.jpg
+*.jpeg
+*.JPG
+*.png
+!reports/figures/*.png
+
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Notebooks
+.ipynb_checkpoints/

@@ -1,0 +1,48 @@
+[project]
+name = "reefwatch"
+version = "0.1.0"
+description = "Comparability-aware, abstaining change alerts for repeat coral reef photo-surveys"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Disha Singh" }]
+dependencies = [
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "pyarrow>=15",
+  "scikit-learn>=1.4",
+  "opencv-python-headless>=4.9",
+  "pillow>=10",
+  "imagehash>=4.3",
+  "omegaconf>=2.3",
+  "pyyaml>=6.0",
+  "requests>=2.31",
+  "fpdf2>=2.7",
+]
+
+[project.optional-dependencies]
+train = ["torch>=2.3", "torchvision>=0.18", "timm>=1.0", "wandb>=0.17", "open_clip_torch>=2.24"]
+app = ["streamlit>=1.36", "torch>=2.3", "timm>=1.0", "huggingface_hub>=0.23"]
+dev = ["pytest>=8", "ruff>=0.5", "pre-commit>=3.7"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/reefwatch"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: needs model weights, network or large fixtures"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "NPY"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["reefwatch"]

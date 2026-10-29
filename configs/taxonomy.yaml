@@ -1,0 +1,29 @@
+# Single source of truth for labels (CLAUDE.md section 4). Every loader reads this file.
+# L1 = functional groups used for cover and change (guide Part 3, section 3.3).
+# L2 = ReefNet v3 hard-coral benchmark classes (39); filled in from ReefNet_labelmapping.xlsx.
+
+l1_groups:
+  - hard_coral     # primary change metric
+  - soft_coral
+  - cca            # crustose coralline algae
+  - other_algae    # turf + macroalgae
+  - sand_rubble
+  - other          # excluded from macro recall
+
+# Raw label -> L1. MLC mapping from Beijbom et al. 2012 (9 classes).
+# ReefNet raw labels are added after inspecting Broad_category.
+l1_map:
+  mlc:
+    Acropora: hard_coral
+    Pavona: hard_coral
+    Montipora: hard_coral
+    Pocillopora: hard_coral
+    Porites: hard_coral
+    CCA: cca
+    Turf: other_algae
+    Macroalgae: other_algae
+    Sand: sand_rubble
+  reefnet: {}
+
+# L2 benchmark genera (39), in fixed index order. To be filled in.
+l2_classes: []
