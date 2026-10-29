@@ -1,0 +1,21 @@
+CoralNet_source,Image_name,Row,Column,CoralNet_label,Sorted_ReefNet_label,AphiaID,Broad_category,Train_or_Test,Latitude,Longitude,Ecoregion,Resolution
+s100,img_000.jpg,50,80,ACRO,Acropora,0,Hard coral,Test,21.5,-157.9,Synthetic,0.5
+s101,img_000.jpg,60,87,PORI,Porites,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s102,img_000.jpg,70,94,POCI,Pocillopora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s100,img_000.jpg,80,101,MONT,Montipora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s101,img_001.jpg,90,108,ACRO,Acropora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s102,img_001.jpg,100,115,PORI,Porites,0,Hard coral,Test,21.5,-157.9,Synthetic,0.5
+s100,img_001.jpg,110,122,POCI,Pocillopora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s101,img_001.jpg,Bleached,129,MONT,Montipora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s102,img_002.jpg,130,136,ACRO,Acropora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s100,img_002.jpg,140,143,PORI,Porites,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s101,img_002.jpg,150,150,POCI,Pocillopora,0,Hard coral,Test,21.5,-157.9,Synthetic,0.5
+s102,img_002.jpg,160,157,MONT,Montipora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s100,img_003.jpg,170,12.5,ACRO,Acropora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s101,img_003.jpg,180,171,PORI,Porites,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s102,img_003.jpg,190,178,POCI,Pocillopora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s100,img_003.jpg,200,185,MONT,Montipora,0,Hard coral,Test,n/a,-157.9,Synthetic,0.5
+s101,img_004.jpg,210,192,ACRO,Acropora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s102,img_004.jpg,220,199,PORI,Porites,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s100,img_004.jpg,230,206,POCI,Pocillopora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
+s101,img_004.jpg,240,213,MONT,Montipora,0,Hard coral,Train,21.5,-157.9,Synthetic,0.5
