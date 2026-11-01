@@ -21,5 +21,7 @@ Nothing in this folder is committed except this README and the split ID lists in
 3. **Moorea Labeled Corals**: EDI package `knb-lter-mcr.5006`
    (<https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-mcr.5006.3>) → `raw/mlc/`.
    [UNVERIFIED — check: package revision number and file names on the EDI page.]
+   Then check `mlc.filename_pattern` in `configs/data.yaml` against the real file names and run
+   `python -m reefwatch.data.ingest_mlc` (or `notebooks/02_mlc_gate.ipynb`).
 
 Record the download date and file sizes in `docs/DECISIONS.md`.

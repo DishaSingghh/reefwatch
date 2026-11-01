@@ -29,3 +29,13 @@ dedup:
 
 split:
   seed: 42
+
+mlc:
+  # File-name pattern with named groups. `quadrat` and `year` are required; `site`, `habitat`,
+  # `transect` and `date` are optional and become part of the quadrat key when present.
+  # [UNVERIFIED — check: real names with `find data/raw/mlc | head -30`, then edit this pattern.]
+  filename_pattern: '(?P<site>mcr_lter\d+)_(?P<habitat>[a-z0-9]+)_(?P<transect>pole\d+-\d+)_(?P<quadrat>qu\d+)_(?P<date>(?P<year>20\d{2})\d{4})'
+  image_exts: [.jpg, .jpeg, .png]
+  annotation_ext: .txt    # one file per image, same stem; lines hold row, col, label
+  min_match_rate: 0.95    # below this, the pattern is probably wrong
+  gate_min_quadrats: 100  # quadrats seen in 2+ years needed to use real before/after pairs
