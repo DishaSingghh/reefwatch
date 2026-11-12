@@ -161,6 +161,6 @@ Tests use tiny synthetic fixtures in `tests/fixtures/` — never real data, neve
 - When you add a design decision, append a dated line to `docs/DECISIONS.md`.
 - Explain non-obvious code briefly (why, not what). Disha is learning; teaching comments are welcome
   in tests and docs, short in code.
-- This is a personal project. Word commits, docs, README and the app as a personal project, never
-  as research (no "hypotheses", "experiments", "paper" framing). Push finished work to
-  `DishaSingghh/reefwatch`.
+- This is a personal project. Word commits, docs, README and the app in plain, practical language
+  about what the tool does. Push finished work to `DishaSingghh/reefwatch`. Plans, checklists and
+  to-do lists never go in this repo.
