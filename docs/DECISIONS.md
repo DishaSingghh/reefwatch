@@ -18,3 +18,9 @@ One dated entry per decision. Never edit an old entry; add a new one that supers
 - **Decision:** Path A (real MLC same-quadrat pairs), pending the quadrat-link check.
 - **Quadrat-link check:** PASS if at least 100 quadrats appear in 2+ years with explicit IDs. Otherwise switch
   to Path B and record it here.
+
+## 2026-11-12 — Moorea photos are for testing only
+- **Decision:** the 2008–2010 Moorea photos are used only as real before/after test pairs. The point
+  classifier trains on ReefNet alone; nothing is trained, tuned or calibrated on Moorea.
+- **Why:** the photos are old, so they are not used to teach the model; they remain a valid record of
+  what each quadrat looked like in its survey year, which is what a change test needs.

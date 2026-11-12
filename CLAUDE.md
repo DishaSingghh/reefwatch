@@ -23,6 +23,7 @@ Data:
   ReefNet has NO temporal task and NO capture dates. Never pair ReefNet images.
 - **Moorea Labeled Corals (MLC)** (MCR LTER, CC BY 4.0): 2008–2010, 200 expert points per image,
   9 classes. Real same-quadrat pairs (Path A), matched only by explicit quadrat ID.
+  **Test only:** never train, tune or calibrate on MLC; it is used only to evaluate change detection.
 - **Red Sea Global / Al-Wajh test set** (HF zip): cross-source test only.
 - **Synthetic stress test**: physics-based image degradations. Always labelled synthetic.
 
