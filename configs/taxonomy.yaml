@@ -24,6 +24,19 @@ l1_map:
     Macroalgae: other_algae
     Sand: sand_rubble
   reefnet: {}
+  # NOAA NCRMP CATEGORY_NAME (Tier 1), values listed in data dictionary InPort 78601.
+  # null = not part of the reef (survey gear, unreadable); dropped from cover.
+  noaa:
+    coral: hard_coral
+    soft coral: soft_coral
+    coralline alga: cca
+    macroalga: other_algae
+    turf alga: other_algae
+    sediment: sand_rubble
+    sessile invertebrate: other
+    mobile fauna: other
+    tape and wand: null
+    unclassified: null
 
 # L2 benchmark genera (39), in fixed index order. To be filled in.
 l2_classes: []

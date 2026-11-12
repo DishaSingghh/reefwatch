@@ -24,6 +24,9 @@ Data:
 - **Moorea Labeled Corals (MLC)** (MCR LTER, CC BY 4.0): 2008–2010, 200 expert points per image,
   9 classes. Real same-quadrat pairs (Path A), matched only by explicit quadrat ID.
   **Test only:** never train, tune or calibrate on MLC; it is used only to evaluate change detection.
+- **NOAA NCRMP permanent sites** (InPort 78600 labels, 71813 photos; cite PIFSC ESD): 2012–2025,
+  10 CoralNet points per photo, fixed sites revisited. **Main before/after test set, test only.**
+  Site-level cover pairs are reliable; photo pairs are approximate (tape re-laid each visit).
 - **Red Sea Global / Al-Wajh test set** (HF zip): cross-source test only.
 - **Synthetic stress test**: physics-based image degradations. Always labelled synthetic.
 

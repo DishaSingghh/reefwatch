@@ -24,3 +24,10 @@ One dated entry per decision. Never edit an old entry; add a new one that supers
   classifier trains on ReefNet alone; nothing is trained, tuned or calibrated on Moorea.
 - **Why:** the photos are old, so they are not used to teach the model; they remain a valid record of
   what each quadrat looked like in its survey year, which is what a change test needs.
+
+## 2026-11-12 — NOAA permanent sites become the main before/after test set
+- **Decision:** test pairs come mainly from NOAA NCRMP permanent-site photos (2012–2025). Moorea stays
+  as an optional extra check. Both are test only.
+- **Why:** newer data; per-point labels with x/y positions; fixed sites revisited across years.
+- **Caveat:** divers re-lay the tape from a permanent stake each visit, so photo N in two years shows
+  roughly the same patch. Site-level cover change is the reliable comparison; photo pairs are approximate.

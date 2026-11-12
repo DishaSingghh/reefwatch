@@ -24,4 +24,11 @@ Nothing in this folder is committed except this README and the split ID lists in
    Then check `mlc.filename_pattern` in `configs/data.yaml` against the real file names and run
    `python -m reefwatch.data.ingest_mlc` (or `notebooks/02_mlc_gate.ipynb`).
 
+4. **NOAA NCRMP permanent sites** (main before/after test set):
+   - Labels: the CSV from <https://accession.nodc.noaa.gov/0317416> (listed on
+     <https://www.fisheries.noaa.gov/inport/item/78600>). Save it as
+     `raw/noaa/NCRMP_BENTHIC_COVER_FIXED_PACIFIC.csv`, then run `python -m reefwatch.data.ingest_noaa`.
+   - Photos: per region and year, linked from <https://www.fisheries.noaa.gov/inport/item/71813>
+     (several GB each) → `raw/noaa/images/`. Only needed once the label CSV shows which sites pair up.
+
 Record the download date and file sizes in `docs/DECISIONS.md`.

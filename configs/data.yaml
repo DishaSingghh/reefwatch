@@ -3,6 +3,8 @@ paths:
   root: .
   reefnet_csv: data/raw/All_ReefNet_annotations.csv
   mlc_dir: data/raw/mlc
+  noaa_csv: data/raw/noaa/NCRMP_BENTHIC_COVER_FIXED_PACIFIC.csv   # rename your download to this
+  noaa_images: data/raw/noaa/images
   rsg_zip: data/raw/ReefNet_RSG-TestDataset_images.zip
   interim: data/interim
   patches: data/patches
@@ -39,3 +41,9 @@ mlc:
   annotation_ext: .txt    # one file per image, same stem; lines hold row, col, label
   min_match_rate: 0.95    # below this, the pattern is probably wrong
   gate_min_quadrats: 100  # quadrats seen in 2+ years needed to use real before/after pairs
+
+noaa:
+  # Columns from the NOAA data dictionary (InPort 78601). X_POS/Y_POS units are not documented:
+  # check them against image size before cutting patches.
+  required_columns: [SITE, SITEVISITID, OBS_YEAR, IMAGE_NAME, PHOTOID, CATEGORY_NAME, X_POS, Y_POS]
+  permanent_only: true    # keep rows with PERM_SITE == -1 when that column is filled
