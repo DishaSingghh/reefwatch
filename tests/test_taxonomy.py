@@ -30,3 +30,9 @@ def test_unknown_group_raises():
     tax = {"l1_groups": ["a"], "l1_map": {"s": {"x": "b"}}}
     with pytest.raises(ValueError, match="unknown groups"):
         map_l1(pd.Series(["x"]), None, tax, "s")
+
+
+def test_water_is_excluded_not_substrate():
+    # Water sits under "Abiotic background", whose fallback is sand_rubble; it must not get there.
+    l1, how = map_l1(pd.Series(["Water"]), pd.Series(["Abiotic background"]), TAX, "reefnet")
+    assert l1.isna().all() and how.tolist() == ["excluded"]

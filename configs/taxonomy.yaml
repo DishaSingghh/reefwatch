@@ -50,6 +50,7 @@ l1_map:
     Unknown: null
     Shadow: null
     Human objects: null
+    Water: null                     # open water in frame, not reef cover
 
   # NOAA NCRMP CATEGORY_NAME (Tier 1), values listed in data dictionary InPort 78601.
   # null = not part of the reef (survey gear, unreadable); dropped from cover.

@@ -42,3 +42,6 @@ One dated entry per decision. Never edit an old entry; add a new one that supers
   rubble as bare substrate; Millepora counts as hard coral; Octocorallia is soft coral; Zoantharia,
   Corallimorpharia, sponges, seagrass and other animals are `other`; Unsorted, Unknown, Shadow and
   Human objects are excluded.
+- **Check on the full list (128 labels):** 0 unmapped. Water (1,825 points, under Abiotic background)
+  was falling back to bare substrate; it is now excluded. Resulting shares: other_algae 47.3%,
+  hard_coral 22.5%, sand_rubble 15.0%, cca 10.1%, other 3.3%, soft_coral 1.8%.
