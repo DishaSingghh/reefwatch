@@ -7,7 +7,7 @@ l1_groups:
   - soft_coral
   - cca            # crustose coralline algae
   - other_algae    # turf + macroalgae
-  - sand_rubble
+  - sand_rubble    # bare substrate: sand, rubble, rock
   - other          # excluded from macro recall
 
 # Raw label -> L1. MLC mapping from Beijbom et al. 2012 (9 classes).
@@ -23,7 +23,34 @@ l1_map:
     Turf: other_algae
     Macroalgae: other_algae
     Sand: sand_rubble
-  reefnet: {}
+  # ReefNet Sorted_ReefNet_label -> L1, from the label counts of the real CSV (2026-11-24).
+  # The 50 labels below cover 99.4% of points; rarer labels use l1_fallback by Broad_category.
+  # null = not reef cover (shadow, gear, unknown); excluded from cover and training targets.
+  reefnet:
+    Turf algae: other_algae
+    Corallinales: cca
+    Sediment: sand_rubble
+    Hard substrate: sand_rubble     # bare rock/pavement: grouped with sand and rubble as bare substrate
+    Rubble: sand_rubble
+    Hard coral: hard_coral          # coral not identified to genus: counts for cover, not for L2
+    Macroalgae: other_algae
+    Rhodophyta: other_algae
+    Chlorophyta: other_algae
+    Phaeophyceae: other_algae
+    Cyanobacteria: other_algae
+    Octocorallia: soft_coral
+    Millepora: hard_coral           # fire coral: calcifying, counted as hard coral in cover surveys
+    Zoantharia: other
+    Corallimorpharia: other
+    Porifera: other
+    Seagrass: other
+    Echinoidea: other
+    Tunicata: other
+    Unsorted: null
+    Unknown: null
+    Shadow: null
+    Human objects: null
+
   # NOAA NCRMP CATEGORY_NAME (Tier 1), values listed in data dictionary InPort 78601.
   # null = not part of the reef (survey gear, unreadable); dropped from cover.
   noaa:
@@ -37,6 +64,15 @@ l1_map:
     mobile fauna: other
     tape and wand: null
     unclassified: null
+
+# Used when a raw label is not in l1_map. Any coral genus falls back to hard_coral this way.
+l1_fallback:
+  reefnet:
+    Hard corals: hard_coral
+    Algae: other_algae
+    Abiotic background: sand_rubble
+    Other biota: other
+    Unsorted: null
 
 # L2 benchmark genera (39), in fixed index order. To be filled in.
 l2_classes: []

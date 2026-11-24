@@ -31,3 +31,14 @@ One dated entry per decision. Never edit an old entry; add a new one that supers
 - **Why:** newer data; per-point labels with x/y positions; fixed sites revisited across years.
 - **Caveat:** divers re-lay the tape from a permanent stake each visit, so photo N in two years shows
   roughly the same patch. Site-level cover change is the reliable comparison; photo pairs are approximate.
+
+## 2026-11-24 — ReefNet labels mapped to the six functional groups
+- **Data:** the full CSV has 5,935,899 points, 0 rejected at ingest. Broad categories: Algae 3,177,343;
+  Hard corals 1,220,741; Abiotic background 1,132,663; Other biota 302,024; Unsorted 103,128.
+  Official split: train 4,762,555, test 1,173,344. (The paper's 924,626 points are the coral
+  benchmark subset.)
+- **Decision:** the 50 most common labels (99.4% of points) are mapped one by one in
+  `configs/taxonomy.yaml`; rarer labels use their broad category. Hard substrate joins sand and
+  rubble as bare substrate; Millepora counts as hard coral; Octocorallia is soft coral; Zoantharia,
+  Corallimorpharia, sponges, seagrass and other animals are `other`; Unsorted, Unknown, Shadow and
+  Human objects are excluded.
