@@ -41,3 +41,38 @@ def map_l1(
         how[use_fb] = "fallback"
     how[(how != "unmapped") & l1.isna()] = "excluded"
     return l1.astype("string"), how
+
+
+def l2_candidates(
+    points: pd.DataFrame,
+    exclude: list[str],
+    min_total: int = 100,
+    min_sources: int = 3,
+    min_per_source: int = 10,
+    label_col: str = "Sorted_ReefNet_label",
+    broad_col: str = "Broad_category",
+    source_col: str = "CoralNet_source",
+) -> pd.DataFrame:
+    """Hard-coral labels that pass the ReefNet paper's stated count rules (Sec 3.2, App B.1):
+    at least `min_total` points, in at least `min_sources` sources with `min_per_source` points
+    each. The paper also dropped labels after expert review, which cannot be redone here, so the
+    result can contain more classes than the official 39.
+
+    Returns one row per label with `n`, `n_sources_ok` and `keep`.
+    """
+    hc = points[(points[broad_col] == "Hard corals") & ~points[label_col].isin(exclude)]
+    per_source = hc.groupby([label_col, source_col]).size()
+    n_sources_ok = (per_source >= min_per_source).groupby(level=0).sum()
+    out = pd.DataFrame({"n": hc.groupby(label_col).size(), "n_sources_ok": n_sources_ok})
+    out["keep"] = (out["n"] >= min_total) & (out["n_sources_ok"] >= min_sources)
+    return out.sort_values("n", ascending=False).reset_index(names=label_col)
+
+
+def load_condition_map(xlsx_path: str | Path) -> dict[str, str]:
+    """CoralNet label -> condition ("Dead", "Bleached", "Trematodiasis") from the
+    All_labels sheet of ReefNet_labelmapping.xlsx. Labels with no condition are left out."""
+    sheet = pd.read_excel(xlsx_path, sheet_name="All_labels", dtype=str)
+    sheet = sheet.dropna(subset=["CoralNet label", "Condition indication"])
+    return dict(
+        zip(sheet["CoralNet label"].str.strip(), sheet["Condition indication"], strict=True)
+    )

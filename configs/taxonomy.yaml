@@ -75,5 +75,13 @@ l1_fallback:
     Other biota: other
     Unsorted: null
 
-# L2 benchmark genera (39), in fixed index order. To be filled in.
+# L2 coral classes. The paper's list of 39 is not in the label workbook, so candidates come from
+# applying the paper's stated rules to the CSV (reefwatch.data.taxonomy.l2_candidates).
+l2_rules:
+  exclude: [Hard coral]          # generic label, not a genus
+  min_total: 100
+  min_sources: 3
+  min_per_source: 10
+
+# L2 classes in fixed index order. To be filled in from the audit notebook output.
 l2_classes: []
