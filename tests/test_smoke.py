@@ -29,4 +29,4 @@ def test_data_config_loads():
 
     cfg = OmegaConf.load(ROOT / "configs" / "data.yaml")
     assert cfg.patches.crop_px > cfg.patches.store_px
-    assert set(cfg.subset.tiers) == {"S", "M"}
+    assert set(cfg.subset.tiers) == {"S", "M", "test"}

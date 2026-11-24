@@ -55,3 +55,15 @@ One dated entry per decision. Never edit an old entry; add a new one that supers
   177,442 points (14.5% of hard-coral points; 171,724 of them under the generic "Hard coral").
   Dead coral now counts as bare substrate (`sand_rubble`), not live hard coral, and is not used as a
   coral-class example. Bleached coral (13,890 points) stays live hard coral with its genus.
+
+## 2026-11-24 — Training subsets
+
+- Images are picked class by class, rarest class first, taking one image per source in turn
+  (seeded shuffle), until each class has `quota_cap` points or the image budget runs out. No source
+  may supply more than 25% of a tier's images.
+- Tier S uses a cap of 500 points per class, not 1000. At 1000 the 6,000-image budget ran out
+  after 30 of the 54 classes, leaving 20 common genera short (Diploastrea had 27 points). At 500
+  every class reaches its target with 5,884 images.
+- Tier M keeps a cap of 4000 and reaches every target with 29,673 images.
+- The test tier (from ReefNet's own test split) uses a cap of 300: 2,728 images, every class but
+  one at target. Some classes are tiny in the test split (Seriatopora has 3 points).

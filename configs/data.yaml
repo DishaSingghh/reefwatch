@@ -16,9 +16,12 @@ ingest:
 
 subset:
   seed: 0
-  tiers:
-    S: { images: 6000, quota_cap: 1000 }
-    M: { images: 30000, quota_cap: 4000 }
+  max_source_frac: 0.25   # no source may supply more than this share of a tier (when >= 4 sources)
+  label_xlsx: data/raw/ReefNet_labelmapping.xlsx
+  tiers:                  # pool = value of Train_or_Test the tier draws from
+    S: { images: 6000, quota_cap: 500, pool: train }
+    M: { images: 30000, quota_cap: 4000, pool: train }
+    test: { images: 3000, quota_cap: 300, pool: test }
 
 patches:
   crop_px: 512
