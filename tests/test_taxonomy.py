@@ -87,3 +87,28 @@ def test_condition_map(tmp_path):
         }
     ).to_excel(xlsx, sheet_name="All_labels", index=False)
     assert load_condition_map(xlsx) == {"Acropora Dead": "Dead", "Porites bleached": "Bleached"}
+
+
+def test_dead_coral_is_not_live_coral():
+    labels = pd.Series(["Acropora", "Acropora", "Hard coral"])
+    broad = pd.Series(["Hard corals"] * 3)
+    cond = pd.Series([pd.NA, "Dead", "Dead"])
+    l1, how = map_l1(labels, broad, TAX, "reefnet", condition=cond)
+    assert l1.tolist() == ["hard_coral", "sand_rubble", "sand_rubble"]
+    assert how.tolist() == ["fallback", "condition", "condition"]
+
+
+def test_l2_target_skips_dead_and_unknown():
+    from reefwatch.data.taxonomy import l2_target
+
+    classes = TAX["l2_classes"]
+    labels = pd.Series(["Acropora", "Acropora", "Hard coral", "Porites"])
+    cond = pd.Series([pd.NA, "Dead", pd.NA, "Bleached"])
+    out = l2_target(labels, TAX, cond)
+    assert out.tolist() == [classes.index("Acropora"), -1, -1, classes.index("Porites")]
+
+
+def test_l2_classes_sorted_and_unique():
+    classes = TAX["l2_classes"]
+    assert classes == sorted(set(classes))
+    assert "Hard coral" not in classes

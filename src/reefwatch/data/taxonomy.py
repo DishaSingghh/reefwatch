@@ -17,17 +17,24 @@ def map_l1(
     broad: pd.Series | None,
     taxonomy: dict,
     source: str,
+    condition: pd.Series | None = None,
 ) -> tuple[pd.Series, pd.Series]:
     """Return (l1, how) per row.
 
     `how` is "label" (exact label in l1_map), "fallback" (via l1_fallback on the broad category),
-    "excluded" (mapped to null on purpose) or "unmapped" (nothing matched; l1 is null and the
-    label needs a line in taxonomy.yaml).
+    "condition" (overridden by `condition_l1`, e.g. dead coral), "excluded" (mapped to null on
+    purpose) or "unmapped" (nothing matched; l1 is null and the label needs a line in
+    taxonomy.yaml). `condition` is the per-point condition from `load_condition_map`, if known.
     """
     label_map = taxonomy["l1_map"].get(source) or {}
     fallback = (taxonomy.get("l1_fallback") or {}).get(source) or {}
     groups = set(taxonomy["l1_groups"])
-    bad = {v for v in [*label_map.values(), *fallback.values()] if v is not None} - groups
+    targets = [
+        *label_map.values(),
+        *fallback.values(),
+        *(taxonomy.get("condition_l1") or {}).values(),
+    ]
+    bad = {v for v in targets if v is not None} - groups
     if bad:
         raise ValueError(f"taxonomy maps {source} labels to unknown groups {sorted(bad)}")
 
@@ -39,6 +46,11 @@ def map_l1(
         use_fb = ~in_label & broad.isin(list(fallback))
         l1 = l1.where(~use_fb, broad.map(fallback))
         how[use_fb] = "fallback"
+    cond_map = taxonomy.get("condition_l1") or {}
+    if condition is not None and cond_map:
+        use_cond = condition.isin(list(cond_map))
+        l1 = l1.where(~use_cond, condition.map(cond_map))
+        how[use_cond] = "condition"
     how[(how != "unmapped") & l1.isna()] = "excluded"
     return l1.astype("string"), how
 
@@ -76,3 +88,14 @@ def load_condition_map(xlsx_path: str | Path) -> dict[str, str]:
     return dict(
         zip(sheet["CoralNet label"].str.strip(), sheet["Condition indication"], strict=True)
     )
+
+
+def l2_target(labels: pd.Series, taxonomy: dict, condition: pd.Series | None = None) -> pd.Series:
+    """Index into `l2_classes` per point, or -1 when the point is not a coral-class example
+    (not in the list, or a condition such as Dead in `condition_exclude_l2`)."""
+    index = {name: i for i, name in enumerate(taxonomy.get("l2_classes") or [])}
+    out = labels.map(index).fillna(-1).astype("int16")
+    excl = taxonomy.get("condition_exclude_l2") or []
+    if condition is not None and excl:
+        out[condition.isin(excl)] = -1
+    return out

@@ -66,6 +66,13 @@ l1_map:
     tape and wand: null
     unclassified: null
 
+# Points whose CoralNet label records a condition (column "Condition indication" in
+# ReefNet_labelmapping.xlsx). Dead coral is not live coral cover: it counts as bare substrate and is
+# left out of the coral classes. Bleached coral is still live coral and keeps its genus.
+condition_l1:
+  Dead: sand_rubble
+condition_exclude_l2: [Dead]
+
 # Used when a raw label is not in l1_map. Any coral genus falls back to hard_coral this way.
 l1_fallback:
   reefnet:
@@ -83,5 +90,54 @@ l2_rules:
   min_sources: 3
   min_per_source: 10
 
-# L2 classes in fixed index order. To be filled in from the audit notebook output.
-l2_classes: []
+# L2 classes in fixed index order (alphabetical): the 48 labels that pass l2_rules on the
+# full CSV (2026-11-24). The paper's official list has 39 after expert review; ours is larger.
+l2_classes:
+  - Acanthastrea
+  - Acropora
+  - Agaricia
+  - Astrea
+  - Astreopora
+  - Colpophyllia
+  - Coscinaraea
+  - Cyphastrea
+  - Dendrogyra
+  - Diploastrea
+  - Diploria
+  - Dipsastraea
+  - Echinophyllia
+  - Echinopora
+  - Favia
+  - Favites
+  - Fungia
+  - Galaxea
+  - Gardineroseris
+  - Goniastrea
+  - "Goniopora/Alveopora"
+  - Hydnophora
+  - Isopora
+  - Leptastrea
+  - Leptoria
+  - Leptoseris
+  - Lobophyllia
+  - Madracis
+  - Meandrina
+  - Merulina
+  - Montastraea
+  - Montipora
+  - Mycedium
+  - Orbicella
+  - Oulophyllia
+  - Pachyseris
+  - Pavona
+  - Platygyra
+  - Plesiastrea
+  - Pocillopora
+  - Porites
+  - Psammocora
+  - Pseudodiploria
+  - Seriatopora
+  - Siderastrea
+  - Stephanocoenia
+  - Stylophora
+  - "Turbinaria (coral)"

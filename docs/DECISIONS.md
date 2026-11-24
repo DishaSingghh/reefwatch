@@ -45,3 +45,13 @@ One dated entry per decision. Never edit an old entry; add a new one that supers
 - **Check on the full list (128 labels):** 0 unmapped. Water (1,825 points, under Abiotic background)
   was falling back to bare substrate; it is now excluded. Resulting shares: other_algae 47.3%,
   hard_coral 22.5%, sand_rubble 15.0%, cca 10.1%, other 3.3%, soft_coral 1.8%.
+
+## 2026-11-24 — Coral classes and dead coral
+- **Coral classes (L2):** the label workbook has no list of the paper's 39 classes, so the paper's
+  stated count rules were applied to the full CSV (>= 100 points; >= 3 sources with >= 10 points
+  each; genus level, Fungiidae as "Fungia"; generic "Hard coral" left out). 48 labels pass; the
+  paper's further expert-review removals can't be reproduced. Classes are in `l2_classes`.
+- **Dead coral:** the workbook sorts labels such as "Acropora Dead" under the genus. In the CSV this is
+  177,442 points (14.5% of hard-coral points; 171,724 of them under the generic "Hard coral").
+  Dead coral now counts as bare substrate (`sand_rubble`), not live hard coral, and is not used as a
+  coral-class example. Bleached coral (13,890 points) stays live hard coral with its genus.
