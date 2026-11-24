@@ -39,3 +39,6 @@ dist/
 
 # Notebooks
 .ipynb_checkpoints/
+
+# Local hand-off of updates to the laptop copy (not tracked)
+.sync/
